@@ -1,13 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <title>Kafik Calculator</title>
+  <meta charset="UTF-8">
+  <title>Калькулятор "кафіка"</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0077cc">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #eef6ff;
+      border: 1px solid #cce0ff;
+      border-radius: 4px;
+    }
+    .result p {
+      margin: 5px 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Kafik Calculator</h1>
-    <script src="sw.js"></script>
+  <div class="container">
+    <h2>Калькулятор "кафіка"</h2>
+    <label for="zp">Зарплата (з коефіцієнтом):</label>
+    <input type="number" id="zp" value="5428" step="0.01">
+
+    <label for="hours">Години:</label>
+    <input type="number" id="hours" value="258.5" step="0.1">
+
+    <label for="kof">Додатковий коефіцієнт:</label>
+    <input type="number" id="kof" value="1.05" step="0.01">
+
+    <button onclick="calc()">Розрахувати</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calc() {
+      let zp = parseFloat(document.getElementById("zp").value);
+      let hours = parseFloat(document.getElementById("hours").value);
+      let kof = parseFloat(document.getElementById("kof").value);
+
+      let zp_chyst = zp / kof;
+      let k_baz = zp_chyst / hours;
+      let k_zag = zp / hours;
+      let delta_k = k_zag - k_baz;
+
+      document.getElementById("result").innerHTML = `
+        <p><b>Зарплата без коефіцієнта:</b> ${zp_chyst.toFixed(2)}</p>
+        <p><b>Базовий кафік:</b> ${k_baz.toFixed(2)}</p>
+        <p><b>Кафік з допом:</b> ${k_zag.toFixed(2)}</p>
+        <p><b>Ефект допа:</b> ${delta_k.toFixed(2)}</p>
+      `;
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 </body>
 </html>
