@@ -33,4 +33,9 @@ function calc() {
       <p><b>Кафік з допом:</b> ${k_zag.toFixed(2)}</p>
       <p><b>Ефект допа:</b> ${delta_k.toFixed(2)}</p>
     `;
+
+}
+if (isNaN(zp) || isNaN(hours) || isNaN(kof) || hours <= 0 || kof <= 0) {
+    // ... вивід помилки
+    return;
 }
