@@ -95,18 +95,18 @@
           <form id="calculator" novalidate>
             <div class="field">
               <label for="salary">Зарплата з коефіцієнтом</label>
-              <input id="salary" name="salary" type="text" inputmode="decimal" autocomplete="off" value="5428" aria-describedby="salary-hint">
-              <span class="hint" id="salary-hint">Сума за весь період, наприклад 5428</span>
+              <input id="salary" name="salary" type="text" inputmode="decimal" autocomplete="off" aria-describedby="salary-hint">
+              <span class="hint" id="salary-hint">Сума за весь період</span>
             </div>
             <div class="field">
               <label for="hours">Відпрацьовані години</label>
-              <input id="hours" name="hours" type="text" inputmode="decimal" autocomplete="off" value="258,5" aria-describedby="hours-hint">
-              <span class="hint" id="hours-hint">Дозволено крапку або кому: 258,5</span>
+              <input id="hours" name="hours" type="text" inputmode="decimal" autocomplete="off" aria-describedby="hours-hint">
+              <span class="hint" id="hours-hint">Можна використовувати кому або крапку</span>
             </div>
             <div class="field">
               <label for="coefficient">Додатковий коефіцієнт</label>
-              <input id="coefficient" name="coefficient" type="text" inputmode="decimal" autocomplete="off" value="1,05" aria-describedby="coefficient-hint">
-              <span class="hint" id="coefficient-hint">1 — без доплати, 1,05 — +5%</span>
+              <input id="coefficient" name="coefficient" type="text" inputmode="decimal" autocomplete="off" aria-describedby="coefficient-hint">
+              <span class="hint" id="coefficient-hint">Введи коефіцієнт, за яким розрахована зарплата</span>
             </div>
             <div class="actions">
               <button class="primary" type="submit">Розрахувати</button>
@@ -120,7 +120,8 @@
             <h2 id="results-title">Результат</h2>
             <span class="live-indicator">Оновлюється автоматично</span>
           </div>
-          <div id="results" aria-live="polite" aria-atomic="true">
+          <p id="empty-state" class="subtitle">Заповни всі поля, щоб побачити розрахунок.</p>
+          <div id="results" aria-live="polite" aria-atomic="true" hidden>
             <div class="metrics">
               <div class="metric">
                 <span class="metric-label">Базовий кафік</span>

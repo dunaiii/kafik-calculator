@@ -1,4 +1,4 @@
-const CACHE_NAME = "kafik-v2";
+const CACHE_NAME = "kafik-v3";
 const APP_FILES = [
   "./",
   "./index.html",

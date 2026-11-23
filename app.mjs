@@ -3,6 +3,7 @@ import { calculateKafik, parseNumber } from "./calculator.mjs";
 const form = document.querySelector("#calculator");
 const result = document.querySelector("#results");
 const error = document.querySelector("#error");
+const emptyState = document.querySelector("#empty-state");
 const fields = {
   salary: document.querySelector("#salary"),
   hours: document.querySelector("#hours"),
@@ -18,6 +19,18 @@ function setValue(id, value) {
 }
 
 function update() {
+  // No error or calculation is shown until all three fields have values.
+  if (Object.values(fields).some((field) => field.value.trim() === "")) {
+    for (const field of Object.values(fields)) {
+      field.setAttribute("aria-invalid", "false");
+    }
+    error.hidden = true;
+    result.hidden = true;
+    emptyState.hidden = false;
+    return;
+  }
+  emptyState.hidden = true;
+
   const salary = parseNumber(fields.salary.value);
   const hours = parseNumber(fields.hours.value);
   const coefficient = parseNumber(fields.coefficient.value);
