@@ -1,1 +1,18 @@
-{\n  "name": "Калькулятор кафіка",\n  "short_name": "Кафік",\n  "start_url": "index.html",\n  "display": "standalone",\n  "background_color": "#ffffff",\n  "theme_color": "#0077cc",\n  "icons": [\n    {\n      "src": "icon.png",\n      "sizes": "192x192",\n      "type": "image/png"\n    },\n    {\n      "src": "icon.png",\n      "sizes": "512x512",\n      "type": "image/png"\n    }\n  ]\n}
+{
+  "name": "Калькулятор кафіка",
+  "short_name": "Кафік",
+  "lang": "uk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fb",
+  "theme_color": "#2563eb",
+  "description": "Погодинна ставка, базова зарплата та вплив коефіцієнта.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
